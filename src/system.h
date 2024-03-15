@@ -1,10 +1,23 @@
 #pragma once
 
-class CardSystem // for card handling  (give take and shuffle)
-{};
+class InputSystem
+{
+    // taking input from user whether to hit or stand
+};
 
-class PointSystem // for calculating points 
-{};
+class BlackjackSystem
+{
+    // calculates the score of hands, checks for blackjack and 
+    // and determine who's the winner ot loser
+};
 
-class GameSystem // For text user interface
-{};
+class CardSystem
+{
+    // Deals card to the player and dealer
+};
+
+class ScoreSystem
+{
+    // updates the score of the player and dealer, and checks for blackjack
+    // and special values such as aces being counted as 1 or 11
+};
