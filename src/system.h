@@ -1,8 +1,13 @@
 #pragma once
 
+#include "components.h"
+#include "entities.h"
+
 class InputSystem
 {
     // taking input from user whether to hit or stand
+    void takeInput();
+
 };
 
 class BlackjackSystem
