@@ -27,3 +27,8 @@ struct ScoreComponent
 {
     int score;
 };
+
+struct InputComponent
+{
+    std::string input;
+};
