@@ -1,28 +1,44 @@
-
+#include "system.h"
 #include <iostream>
 #include <string>
 
 
 int main()
 {
-    Entity player;
-    Entity dealer;
-    player.addComponent(new InputComponent());
-    dealer.addComponent(new InputComponent());
-    player.addComponent(new ScoreComponent());
-    dealer.addComponent(new ScoreComponent());
-    player.addComponent(new HandComponent());
-    dealer.addComponent(new HandComponent());
+    Entity player("player"); // Player
+    player.addComponent(new HandComponent{});
+    player.addComponent(new ScoreComponent{0});
+    player.addComponent(new InputComponent{""});
+
+    Entity dealer("dealer"); // Dealer
+    dealer.addComponent(new HandComponent{});
+    dealer.addComponent(new ScoreComponent{0});
+    dealer.addComponent(new InputComponent{""});
+
+    Entity deck("deck"); // Deck of cards
+    deck.addComponent(new DeckComponent());
+
+    Entity UI("UI"); // User Interface
+    UI.addComponent(new UIComponent{""});
+
+    DeckSystem deckSystem;
+    UISystem ui;
+    ScoreSystem scoreSystem;
+    BlackjackSystem blackjackSystem;
+
+    
+   
 
     bool gameRunning = true;
 
-    std::string clearConsole = "\033[2J\033[1;1H";
-    std::string startUI = "Welcome to Blackjack! Press 's' to start the game or 'q' to quit: \n";
-
     while (gameRunning)
     {
-        std::cout << clearConsole;
-        std::cout << startUI;
+        ui.displayClear();
+        deckSystem.initDeck(&deck);
+        deckSystem.shuffleDeck(&deck);
+        deckSystem.dealCard(&deck, &player);
+        ui.displayCards(&player);
+        ui.takeInput(&player);
 
     }
 

@@ -5,12 +5,12 @@
 
 class Entity { // Define a class named Entity
 private:
-    int id; // Member variable to store entity ID
+    std::string id; // Member variable to store entity ID
     std::unordered_map<std::type_index, void*> components; // Map to store components of different types
 
 public:
     // Constructor to initialize the entity with an ID
-    Entity(int id) : id(id) {}
+    Entity(std::string id) : id(id) {}
 
     // Method to add a component to the entity
     template <typename T>
