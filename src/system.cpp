@@ -3,7 +3,6 @@
 
 
 
-
 void UISystem::takeInput(Entity* entity)
 {
     auto input = entity->getComponent<InputComponent>();
@@ -79,4 +78,86 @@ void DeckSystem::shuffleDeck(Entity* deck)
 	std::random_device rd;
 	std::mt19937 gen(rd());
 	std::shuffle(cards->cards.begin(), cards->cards.end(), gen);
+}
+
+void BlackjackSystem::calculateScore(Entity* player, Entity* dealer)
+{
+		// Get the hand component from the player and dealer
+		auto playerHand = player->getComponent<HandComponent>();
+		auto dealerHand = dealer->getComponent<HandComponent>();
+
+		// Get the score component from the player and dealer
+		auto playerScore = player->getComponent<ScoreComponent>();
+		auto dealerScore = dealer->getComponent<ScoreComponent>();
+
+		// Calculate the score of the player and dealer
+		playerScore->score = 0;
+		for (auto card : playerHand->cards)
+		{
+			if (card.rank == "Jack" || card.rank == "Queen" || card.rank == "King")
+			{
+				playerScore->score += 10;
+			}
+			else if (card.rank == "Ace")
+			{
+				playerScore->score += 11;
+			}
+			else
+			{
+				playerScore->score += std::stoi(card.rank);
+			}
+		}
+
+		dealerScore->score = 0;
+		for (auto card : dealerHand->cards)
+		{
+			if (card.rank == "Jack" || card.rank == "Queen" || card.rank == "King")
+			{
+				dealerScore->score += 10;
+			}
+			else if (card.rank == "Ace")
+			{
+				dealerScore->score += 11;
+			}
+			else
+			{
+				dealerScore->score += std::stoi(card.rank);
+			}
+		}
+
+		// Check if the player or dealer has a blackjack
+		if (playerScore->score == 21 && dealerScore->score == 21)
+		{
+			std::cout << "Both player and dealer have a blackjack! It's a Tie!\n";
+		}
+		else if (playerScore->score == 21)
+		{
+			std::cout << "Player wins with a blackjack!\n";
+		}
+		else if (dealerScore->score == 21)
+		{
+			std::cout << "Dealer wins with a blackjack!\n";
+		}
+		// Check if the player or dealer has busted
+		else if (playerScore->score > 21)
+		{
+			std::cout << "Player has busted!\n";
+		}
+		else if (dealerScore->score > 21)
+		{
+			std::cout << "Dealer has busted!\n";
+		}
+		// Check if the player or dealer has a higher score
+		else if (playerScore->score > dealerScore->score)
+		{
+			std::cout << "Player wins with a score of " << playerScore->score << "!\n";
+		}
+		else if (dealerScore->score > playerScore->score)
+		{
+			std::cout << "Dealer wins with a score of " << dealerScore->score << "!\n";
+		}
+		else
+		{
+			std::cout << "It's a Tie!\n";
+		}
 }

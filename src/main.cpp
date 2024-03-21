@@ -9,11 +9,13 @@ int main()
     player.addComponent(new HandComponent{});
     player.addComponent(new ScoreComponent{0});
     player.addComponent(new InputComponent{""});
+    player.addComponent(new NameComponent{"Player"});
 
     Entity dealer("dealer"); // Dealer
     dealer.addComponent(new HandComponent{});
     dealer.addComponent(new ScoreComponent{0});
     dealer.addComponent(new InputComponent{""});
+    dealer.addComponent(new NameComponent{"Dealer"});
 
     Entity deck("deck"); // Deck of cards
     deck.addComponent(new DeckComponent());
@@ -39,6 +41,7 @@ int main()
         deckSystem.dealCard(&deck, &player);
         ui.displayCards(&player);
         ui.takeInput(&player);
+        blackjackSystem.calculateScore(&player, &dealer);
 
     }
 

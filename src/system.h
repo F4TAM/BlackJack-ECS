@@ -18,6 +18,7 @@ class BlackjackSystem
 {
     // calculates the score of hands, checks for blackjack and 
     // and determine who's the winner ot loser
+    void calculateScore(Entity* player, Entity* dealer);
 };
 
 class DeckSystem
