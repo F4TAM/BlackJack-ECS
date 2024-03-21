@@ -35,6 +35,7 @@ int main()
 
     while (gameRunning)
     {
+
         ui.displayClear();
         deckSystem.initDeck(&deck);
         deckSystem.shuffleDeck(&deck);
@@ -42,6 +43,8 @@ int main()
         ui.displayCards(&player);
         ui.takeInput(&player);
         blackjackSystem.calculateScore(&player, &dealer);
+        ui.displayScores(&player, &dealer);
+        ui.displayWinner(&player, &dealer);
 
     }
 

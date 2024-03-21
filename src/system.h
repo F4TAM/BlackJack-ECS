@@ -17,7 +17,6 @@ class InputSystem
 class BlackjackSystem
 {
     // calculates the score of hands, checks for blackjack and 
-    // and determine who's the winner ot loser
     void calculateScore(Entity* player, Entity* dealer);
 };
 
@@ -43,8 +42,8 @@ class UISystem
     void takeInput(Entity* entity);
 	// displays the cards and scores of the player and dealer
 	void displayCards(Entity* entity);
-	void displayScores(Entity* entity);
-    void displayWinner(std::vector<Entity*> entities);
+	void displayScores(Entity* player, Entity* dealer);
+    void displayWinner(Entity* Player, Entity* dealer;
     void displayClear();
     void displayText(std::string text);
 };
