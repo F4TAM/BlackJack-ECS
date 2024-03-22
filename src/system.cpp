@@ -12,21 +12,33 @@ void UISystem::takeInput(Entity* entity)
 // Display the cards of the player or dealer
 void UISystem::displayCards(Entity* entity)
 {
-    entity->getComponent<HandComponent>();
-    for (auto card : entity->getComponent<HandComponent>()->cards)
-    {
+	auto hand = entity->getComponent<HandComponent>();
+	displayText(entity->getComponent<NameComponent>()->name + " Cards: ");
+
+	if (entity->getComponent<NameComponent>()->name == "Dealer")
+	{
+		std::cout << "Hidden Card\n";
+		for (int i = 1; i < hand->cards.size(); ++i) {
+			auto& card = hand->cards[i];
+			std::cout << card.rank << " of " << card.suit << "\n";
+		}
+		return;
+	}
+
+	for (int i = 0; i < hand->cards.size(); ++i) {
+		auto& card = hand->cards[i];
 		std::cout << card.rank << " of " << card.suit << "\n";
 	}
 }
 // Display the scores of the player or dealer
-void UISystem::displayScores(Entity* player, Entity* dealer)
+void UISystem::displayScores(Entity* entity)
 {
-	auto playerScore = player->getComponent<ScoreComponent>();
-	auto dealerScore = dealer->getComponent<ScoreComponent>();
-
-	std::cout << "Player Score: " << playerScore->score << "\n";
-	std::cout << "Dealer Score: " << dealerScore->score << "\n";
+	auto entityScore = entity->getComponent<ScoreComponent>();
+	auto entityName = entity->getComponent<NameComponent>();
+	
+	std::cout <<entityName->name << " Score: " << entityScore->score << "\n";
 }
+
 // Display the winner of the game
 void UISystem::displayWinner(Entity* player, Entity* dealer)
 {
@@ -96,17 +108,16 @@ void DeckSystem::initDeck(Entity* deck)
 	}
 }
 // Deal a card to the player or dealer
-void DeckSystem::dealCard(Entity* deck, Entity* entity)
+void DeckSystem::dealCard(Entity* deck, Entity* entity, int amount)
 {
    auto cards = deck->getComponent<DeckComponent>();
    auto hand = entity->getComponent<HandComponent>();
 
-   //Randomly select a card from the deck and add it to the hand
-   std::random_device rd;
-   std::mt19937 gen(rd());
-   std::uniform_int_distribution<> dis(0, cards->cards.size() - 1);
-   hand->cards.push_back(*cards->cards[dis(gen)]);
-   cards->cards.erase(cards->cards.begin() + dis(gen));
+   for (int i = 0; i < amount; i++)
+   {
+	   hand->cards.push_back(*cards->cards.back());
+	   cards->cards.pop_back();
+   }
 
 }
 // Shuffle the deck
@@ -119,7 +130,7 @@ void DeckSystem::shuffleDeck(Entity* deck)
 	std::mt19937 gen(rd());
 	std::shuffle(cards->cards.begin(), cards->cards.end(), gen);
 }
-
+// Calculate the score of the player and dealer
 void BlackjackSystem::calculateScore(Entity* player, Entity* dealer)
 {
 		// Get the hand component from the player and dealer
@@ -164,5 +175,10 @@ void BlackjackSystem::calculateScore(Entity* player, Entity* dealer)
 				dealerScore->score += std::stoi(card.rank);
 			}
 		}
+
+}
+// Hit or Stand
+void BlackjackSystem::hitOrStand(Entity* player, Entity* dealer)
+{
 
 }

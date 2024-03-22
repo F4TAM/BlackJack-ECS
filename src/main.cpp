@@ -29,24 +29,37 @@ int main()
     BlackjackSystem blackjackSystem;
 
     
-   
-
+    auto input = player.getComponent<InputComponent>();
+    bool runtime = true;
     bool gameRunning = true;
-
-    while (gameRunning)
+    while (runtime) 
     {
-
-        ui.displayClear();
+        //initialize deck
         deckSystem.initDeck(&deck);
         deckSystem.shuffleDeck(&deck);
-        deckSystem.dealCard(&deck, &player);
-        ui.displayCards(&player);
-        ui.takeInput(&player);
-        blackjackSystem.calculateScore(&player, &dealer);
-        ui.displayScores(&player, &dealer);
-        ui.displayWinner(&player, &dealer);
+        //deal cards
+        deckSystem.dealCard(&deck, &player, 2);
+        deckSystem.dealCard(&deck, &dealer, 2);
 
+
+        while (gameRunning)
+        {
+            ui.displayClear();
+            ui.displayCards(&dealer);
+            ui.displayText("\n");
+            ui.displayCards(&player);
+            blackjackSystem.calculateScore(&player, &dealer);
+            ui.displayScores(&player);
+            ui.displayScores(&dealer);
+            ui.displayText("Player's Turn\n");
+            ui.displayText("Hit Or Stand\n 1. Hit \n 2. Stand");
+            ui.takeInput(&player);
+            
+            
+
+        }
     }
+
 
 
 
