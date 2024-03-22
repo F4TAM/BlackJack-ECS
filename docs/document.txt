@@ -16,7 +16,7 @@ b. Gameplay:
 
 The player is dealt two cards face up, while the dealer receives one card face up and one face down.
 Players can choose to "hit" (draw another card) or "stand" (keep their current hand).
-The dealer must hit until their hand totals 16 or higher.
+The dealer must hit until their hand totals 17 or higher.
 The round ends when the player have either busted (exceeded 21) or chosen to stand. The dealer then reveals their face-down card and draws additional cards if necessary to reach 16 or higher.
 Players win if their hand beats the dealer's without going over 21 or if the dealer busts. If the player's hand ties with the dealer's, it's a tie.
 c. Winning Conditions:
