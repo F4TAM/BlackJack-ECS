@@ -14,6 +14,7 @@ class BlackjackSystem
 public:
     // Calculates the score of hands, checks for blackjack, and updates scores accordingly
     void calculateScore(Entity* player, Entity* dealer);
+    void restart(Entity* player, Entity* dealer, Entity* deck);
 };
 
 class DeckSystem

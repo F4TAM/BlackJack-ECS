@@ -116,12 +116,7 @@ int main()
         {
             // Reset game state for a new round
             gameRunning = true;
-            player.getComponent<StandComponent>()->stand = false;
-            dealer.getComponent<StandComponent>()->stand = false;
-            player.getComponent<ScoreComponent>()->score = 0;
-            dealer.getComponent<ScoreComponent>()->score = 0;
-            player.getComponent<HandComponent>()->cards.clear();
-            dealer.getComponent<HandComponent>()->cards.clear();
+            blackjackSystem.restart(&player, &dealer, &deck);
         }
     }
     return 1;

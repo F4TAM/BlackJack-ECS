@@ -183,3 +183,24 @@ void BlackjackSystem::calculateScore(Entity* player, Entity* dealer)
 	}
 
 }
+
+void BlackjackSystem::restart(Entity* player, Entity* dealer, Entity* deck)
+{
+	// Clear the cards from the player and dealer hands
+	player->getComponent<HandComponent>()->cards.clear();
+	dealer->getComponent<HandComponent>()->cards.clear();
+
+	// Clear the scores of the player and dealer
+	player->getComponent<ScoreComponent>()->score = 0;
+	dealer->getComponent<ScoreComponent>()->score = 0;
+
+	// Clear the stand status of the player and dealer
+	player->getComponent<StandComponent>()->stand = false;
+	dealer->getComponent<StandComponent>()->stand = false;
+
+	// Clear the input of the player and dealer
+	player->getComponent<InputComponent>()->input = "";
+
+	// Clear the deck of cards
+	deck->getComponent<DeckComponent>()->cards.clear();
+}
