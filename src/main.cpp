@@ -55,6 +55,11 @@ int main()
             ui.displayText("Hit Or Stand\n 1. Hit \n 2. Stand");
             ui.takeInput(&player);
             blackjackSystem.dealerHitorStand(&dealer, &deck);
+            if (dealer.getComponent<ScoreComponent>()->score < 17)
+            {
+				deckSystem.dealCard(&deck, &dealer, 1);
+                blackjackSystem.calculateScore(&player, &dealer);
+			}
             
             
 
