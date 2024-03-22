@@ -1,4 +1,5 @@
-#pragma once   
+#pragma once
+
 #include <vector>
 #include <string>
 #include "components.h"
@@ -8,39 +9,45 @@
 #include <random>
 #include <iostream>
 
-
-
 class BlackjackSystem
 {
-    public:
-    // calculates the score of hands, checks for blackjack and 
+public:
+    // Calculates the score of hands, checks for blackjack, and updates scores accordingly
     void calculateScore(Entity* player, Entity* dealer);
 };
 
 class DeckSystem
 {
-    public:
-    // Deals card to the player and dealer
+public:
+    // Initializes the deck of cards
     void initDeck(Entity* deck);
+
+    // Deals specified number of cards to the given entity (player or dealer)
     void dealCard(Entity* deck, Entity* entity, int amount = 1);
+
+    // Shuffles the deck of cards
     void shuffleDeck(Entity* deck);
 };
 
-class ScoreSystem
-{
-    // updates the score of the player and dealer, and checks for blackjack
-    // and special values such as aces being counted as 1 or 11
-};
 
 class UISystem
 {
-
-    public:
+public:
+    // Takes input from the player for hitting or standing
     void takeInput(Entity* entity);
-	// displays the cards and scores of the player and dealer
-	void displayCards(Entity* entity);
-	void displayScores(Entity*  entity);
-    void displayWinner(Entity* Player, Entity* dealer);
+
+    // Displays the cards of the player or dealer
+    void displayCards(Entity* entity);
+
+    // Displays the scores of the player or dealer
+    void displayScores(Entity* entity);
+
+    // Displays the winner of the game
+    void displayWinner(Entity* player, Entity* dealer);
+
+    // Clears the display
     void displayClear();
+
+    // Displays text on the screen
     void displayText(std::string text);
 };

@@ -42,7 +42,7 @@ void UISystem::displayScores(Entity* entity)
 	auto entityScore = entity->getComponent<ScoreComponent>();
 	auto entityName = entity->getComponent<NameComponent>();
 	
-	std::cout <<entityName->name << " Score: " << entityScore->score << "\n";
+	std::cout << "Your Score: " << entityScore->score << "\n";
 }
 
 // Display the winner of the game
