@@ -12,21 +12,27 @@ void UISystem::takeInput(Entity* entity)
 // Display the cards of the player or dealer
 void UISystem::displayCards(Entity* entity)
 {
-	auto hand = entity->getComponent<HandComponent>();
+	auto hand = entity->getComponent<HandComponent>(); // get hand component from entity
+
+	// Display the names of dealer and player and their cards 
 	displayText(entity->getComponent<NameComponent>()->name + " Cards: ");
 
+	// Display the hidden card of the dealer
 	if (entity->getComponent<NameComponent>()->name == "Dealer")
 	{
-		std::cout << "Hidden Card\n";
+		std::cout << "Hidden Card\n"; // Display hidden card
+
+		// Display the rest of the cards
 		for (int i = 1; i < hand->cards.size(); ++i) {
-			auto& card = hand->cards[i];
+			auto& card = hand->cards[i]; // get reference to card
 			std::cout << card.rank << " of " << card.suit << "\n";
 		}
 		return;
 	}
 
+	// Display the cards of the player
 	for (int i = 0; i < hand->cards.size(); ++i) {
-		auto& card = hand->cards[i];
+		auto& card = hand->cards[i]; // get reference to card
 		std::cout << card.rank << " of " << card.suit << "\n";
 	}
 }
