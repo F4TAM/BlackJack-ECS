@@ -183,7 +183,7 @@ void BlackjackSystem::calculateScore(Entity* player, Entity* dealer)
 	}
 
 }
-// Restart the game by clearing the cards, scores, and input
+// clearing the cards, scores, and input for restart
 void BlackjackSystem::restart(Entity* player, Entity* dealer, Entity* deck)
 {
 	// Clear the cards from the player and dealer hands
