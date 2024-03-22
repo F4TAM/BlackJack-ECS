@@ -182,18 +182,6 @@ void BlackjackSystem::calculateScore(Entity* player, Entity* dealer)
 			}
 		}
 
-}
 
-void BlackjackSystem::dealerHitorStand(Entity* dealer, Entity* deck)
-{
-	auto dealerScore = dealer->getComponent<ScoreComponent>();
-	DeckSystem deckSystem;
-
-	while (dealerScore->score < 17)
-	{
-		deckSystem.dealCard(deck, dealer, 1);
-		calculateScore(dealer, deck);
-	}
-}
 
 
