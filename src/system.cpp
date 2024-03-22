@@ -139,49 +139,47 @@ void DeckSystem::shuffleDeck(Entity* deck)
 // Calculate the score of the player and dealer
 void BlackjackSystem::calculateScore(Entity* player, Entity* dealer)
 {
-		// Get the hand component from the player and dealer
-		auto playerHand = player->getComponent<HandComponent>();
-		auto dealerHand = dealer->getComponent<HandComponent>();
+	// Get the hand component from the player and dealer
+	auto playerHand = player->getComponent<HandComponent>();
+	auto dealerHand = dealer->getComponent<HandComponent>();
 
-		// Get the score component from the player and dealer
-		auto playerScore = player->getComponent<ScoreComponent>();
-		auto dealerScore = dealer->getComponent<ScoreComponent>();
+	// Get the score component from the player and dealer
+	auto playerScore = player->getComponent<ScoreComponent>();
+	auto dealerScore = dealer->getComponent<ScoreComponent>();
 
-		// Calculate the score of the player and dealer
-		playerScore->score = 0;
-		for (auto card : playerHand->cards)
+	// Calculate the score of the player and dealer
+	playerScore->score = 0;
+	for (auto card : playerHand->cards)
+	{
+		if (card.rank == "Jack" || card.rank == "Queen" || card.rank == "King")
 		{
-			if (card.rank == "Jack" || card.rank == "Queen" || card.rank == "King")
-			{
-				playerScore->score += 10;
-			}
-			else if (card.rank == "Ace")
-			{
-				playerScore->score += 11;
-			}
-			else
-			{
-				playerScore->score += std::stoi(card.rank);
-			}
+			playerScore->score += 10;
 		}
-
-		dealerScore->score = 0;
-		for (auto card : dealerHand->cards)
+		else if (card.rank == "Ace")
 		{
-			if (card.rank == "Jack" || card.rank == "Queen" || card.rank == "King")
-			{
-				dealerScore->score += 10;
-			}
-			else if (card.rank == "Ace")
-			{
-				dealerScore->score += 11;
-			}
-			else
-			{
-				dealerScore->score += std::stoi(card.rank);
-			}
+			playerScore->score += 11;
 		}
+		else
+		{
+			playerScore->score += std::stoi(card.rank);
+		}
+	}
 
+	dealerScore->score = 0;
+	for (auto card : dealerHand->cards)
+	{
+		if (card.rank == "Jack" || card.rank == "Queen" || card.rank == "King")
+		{
+			dealerScore->score += 10;
+		}
+		else if (card.rank == "Ace")
+		{
+			dealerScore->score += 11;
+		}
+		else
+		{
+			dealerScore->score += std::stoi(card.rank);
+		}
+	}
 
-
-
+}
