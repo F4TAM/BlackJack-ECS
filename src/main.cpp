@@ -54,6 +54,21 @@ int main()
             ui.displayText("Player's Turn\n");
             ui.displayText("Hit Or Stand\n 1. Hit \n 2. Stand");
             ui.takeInput(&player);
+            // player turn, hit or stand
+            if (player.getComponent<InputComponent>()->input == "1")
+            {
+				deckSystem.dealCard(&deck, &player, 1);
+				blackjackSystem.calculateScore(&player, &dealer);
+			}   
+            else if (player.getComponent<InputComponent>()->input == "2")
+            {
+                ui.displayText("Dealer's Turn\n");
+            }
+            else
+            {
+				ui.displayText("Invalid Input\n");
+			}
+            // if dealer score is less than 17, dealer hits
             if (dealer.getComponent<ScoreComponent>()->score < 17)
             {
 				deckSystem.dealCard(&deck, &dealer, 1);
