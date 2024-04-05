@@ -19,7 +19,7 @@ struct NameComponent
 // Struct representing a component for holding player input
 struct InputComponent
 {
-    std::string input; // Stores the input provided by the player
+    std::string input; // Stores the input provided by the player               
 };
 
 // Struct representing a component for holding information about a single card

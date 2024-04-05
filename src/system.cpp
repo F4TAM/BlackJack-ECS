@@ -66,10 +66,14 @@ void UISystem::displayWinner(Entity* player, Entity* dealer)
 	else if(playerScore->score > 21)
 	{
 		std::cout << "Player has busted!\n";
+		std::cout << "Dealer wins with a score of " << dealerScore->score << "!\n";
+		std::cout << "Player's Score: " << playerScore->score << "\n";
 	}
 	else if(dealerScore->score > 21)
 	{
 		std::cout << "Dealer has busted!\n";
+		std::cout << "Player wins with a score of " << playerScore->score << "!\n";
+		std::cout << "Dealer's Score: " << dealerScore->score << "\n";
 	}
 	else if(playerScore->score > dealerScore->score)
 	{
@@ -113,6 +117,7 @@ void DeckSystem::initDeck(Entity* deck)
 		}
 	}
 }
+
 // Deal a card to the player or dealer
 void DeckSystem::dealCard(Entity* deck, Entity* entity, int amount)
 {

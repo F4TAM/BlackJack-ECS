@@ -11,7 +11,7 @@ Blackjack is a game of chance and strategy played between one or more players an
 a. Deck:
 
 A standard 52-card deck is used.
-Each card has a value: numbered cards are worth their face value, face cards (Jacks, Queens, Kings) are worth 10 points each, and Aces can be worth 1 or 11 points.
+Each card has a value: numbered cards are worth their face value, face cards (Jacks, Queens, Kings) are worth 10 points each, and Aces are worth 11 points.
 b. Gameplay:
 
 The player is dealt two cards face up, while the dealer receives one card face up and one face down.

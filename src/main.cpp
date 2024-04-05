@@ -76,7 +76,7 @@ int main()
                 ui.displayText("Dealer's Turn\n");
                 player.getComponent<StandComponent>()->stand = true;
             }
-            else
+
             {
                 ui.displayText("Invalid Input\n");
             }
@@ -98,6 +98,10 @@ int main()
             {
                 gameRunning = false;
             }
+            else if (player.getComponent<ScoreComponent>()->score > 21)
+            {
+				gameRunning = false;
+			}
 
             // Display winner and clear UI
             ui.displayClear();
