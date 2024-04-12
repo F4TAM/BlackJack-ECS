@@ -47,7 +47,7 @@ This documentation provides a comprehensive guide to the development of the Blac
 #### 3. Architectural Overview
 
 - **3.1. Class Diagrams**
-  - ![Class Diagram](assets/chart-programmering.JPG)
+  - ![ECS Architecture Flowchart](assets/chart-programmering.jpg
 
 - **3.2. Entities and Components**
   - **Entities**:
