@@ -39,7 +39,21 @@ Once you've compiled the game, follow these steps to play:
 - The dealer must stand on 17 or higher.
 - The player wins if their hand total is closer to 21 than the dealer's hand without going over.
 
-## Credits
+## Troubleshooting
 
-This Blackjack game implementation is based on the work of [F4TAM](https://github.com/F4TAM). 
+- check if all the files and folders are correct
+- check if you have a run file also called exe file
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## Contact Information
+
+- Ossian.eriksson@elev.ga.ntig.se 
+- Emil.petersson@elev.ga.ntig.se
+
+## Acknowledgements
+
+- OssianDev on github 
 
