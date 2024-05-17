@@ -50,8 +50,8 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## Contact Information
 
-- Ossian.eriksson@elev.ga.ntig.se 
-- Emil.petersson@elev.ga.ntig.se
+- [Ossian](Ossian.eriksson@elev.ga.ntig.se)
+- [Emil](Emil.petersson@elev.ga.ntig.se)
 
 ## Acknowledgements
 
