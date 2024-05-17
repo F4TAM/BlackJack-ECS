@@ -1,31 +1,46 @@
 #pragma once // Include guard to prevent multiple inclusion
+
 #include <unordered_map> // Include necessary library for unordered_map
 #include <string> // Include necessary library for string
 #include <typeindex> // Include necessary library for type_index
 
-class Entity { // Define a class named Entity
+/**
+ * @class Entity
+ * @brief Class representing an entity that can hold various components.
+ */
+class Entity {
 private:
-    std::string id; // Member variable to store entity ID
-    std::unordered_map<std::type_index, void*> components; // Map to store components of different types
+    std::string id; ///< Member variable to store entity ID
+    std::unordered_map<std::type_index, void*> components; ///< Map to store components of different types
 
 public:
-    // Constructor to initialize the entity with an ID
+    /**
+     * @brief Constructor to initialize the entity with an ID.
+     * @param id The ID of the entity.
+     */
     Entity(std::string id) : id(id) {}
 
-    // Method to add a component to the entity
+    /**
+     * @brief Adds a component to the entity.
+     * @tparam T The type of the component.
+     * @param component Pointer to the component to be added.
+     */
     template <typename T>
     void addComponent(T* component) {
-        // Store the component in the map using its type as the key
         components[std::type_index(typeid(T))] = static_cast<void*>(component);
     }
 
-    // Method to get a component of a specific type from the entity
+    /**
+     * @brief Retrieves a component of a specific type from the entity.
+     * @tparam T The type of the component.
+     * @return Pointer to the component if found, otherwise nullptr.
+     */
     template <typename T>
     T* getComponent() {
-        auto it = components.find(std::type_index(typeid(T))); // Find the component in the map
-        if (it != components.end()) { // If component is found
-            return static_cast<T*>(it->second); // Cast and return the component pointer
+        auto it = components.find(std::type_index(typeid(T)));
+        if (it != components.end()) {
+            return static_cast<T*>(it->second);
         }
-        return nullptr; // Return nullptr if component is not found
+        return nullptr;
     }
 };

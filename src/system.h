@@ -9,46 +9,95 @@
 #include <random>
 #include <iostream>
 
-class BlackjackSystem
-{
-public:
-    // Calculates the score of hands, checks for blackjack, and updates scores accordingly
-    void calculateScore(Entity* player, Entity* dealer);
-    void restart(Entity* player, Entity* dealer, Entity* deck);
+/**
+ * @class BlackjackSystem
+ * @brief System for handling the core mechanics of a blackjack game.
+ */
+    class BlackjackSystem {
+    public:
+        /**
+         * @brief Calculates the score of hands, checks for blackjack, and updates scores accordingly.
+         * @param player Pointer to the player entity.
+         * @param dealer Pointer to the dealer entity.
+         */
+        void calculateScore(Entity* player, Entity* dealer);
+
+        /**
+         * @brief Restarts the game by resetting the player, dealer, and deck entities.
+         * @param player Pointer to the player entity.
+         * @param dealer Pointer to the dealer entity.
+         * @param deck Pointer to the deck entity.
+         */
+        void restart(Entity* player, Entity* dealer, Entity* deck);
 };
 
-class DeckSystem
-{
+/**
+ * @class DeckSystem
+ * @brief System for managing the deck of cards in a blackjack game.
+ */
+class DeckSystem {
 public:
-    // Initializes the deck of cards
+    /**
+     * @brief Initializes the deck of cards.
+     * @param deck Pointer to the deck entity.
+     */
     void initDeck(Entity* deck);
 
-    // Deals specified number of cards to the given entity (player or dealer)
+    /**
+     * @brief Deals a specified number of cards to the given entity (player or dealer).
+     * @param deck Pointer to the deck entity.
+     * @param entity Pointer to the entity receiving the cards.
+     * @param amount The number of cards to deal (default is 1).
+     */
     void dealCard(Entity* deck, Entity* entity, int amount = 1);
 
-    // Shuffles the deck of cards
+    /**
+     * @brief Shuffles the deck of cards.
+     * @param deck Pointer to the deck entity.
+     */
     void shuffleDeck(Entity* deck);
 };
 
-
-class UISystem
-{
+/**
+ * @class UISystem
+ * @brief System for handling the user interface in a blackjack game.
+ */
+class UISystem {
 public:
-    // Takes input from the player for hitting or standing
+    /**
+     * @brief Takes input from the player for hitting or standing.
+     * @param entity Pointer to the player entity.
+     */
     void takeInput(Entity* entity);
 
-    // Displays the cards of the player or dealer
+    /**
+     * @brief Displays the cards of the player or dealer.
+     * @param entity Pointer to the entity whose cards are being displayed.
+     */
     void displayCards(Entity* entity);
 
-    // Displays the scores of the player or dealer
+    /**
+     * @brief Displays the scores of the player or dealer.
+     * @param entity Pointer to the entity whose score is being displayed.
+     */
     void displayScores(Entity* entity);
 
-    // Displays the winner of the game
+    /**
+     * @brief Displays the winner of the game.
+     * @param player Pointer to the player entity.
+     * @param dealer Pointer to the dealer entity.
+     */
     void displayWinner(Entity* player, Entity* dealer);
 
-    // Clears the display
+    /**
+     * @brief Clears the display.
+     */
     void displayClear();
 
-    // Displays text on the screen
+    /**
+     * @brief Displays text on the screen.
+     * @param text The text to be displayed.
+     */
     void displayText(std::string text);
 };
+```
