@@ -100,4 +100,3 @@ public:
      */
     void displayText(std::string text);
 };
-```
